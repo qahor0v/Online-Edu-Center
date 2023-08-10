@@ -1,7 +1,7 @@
-import 'package:education/src/controller/courses_button_index.dart';
-import 'package:education/src/ui/pages/colors.dart';
-import 'package:education/src/ui/pages/home_page/subjects_view.dart';
-import 'package:education/src/ui/pages/one_couse_page/one_course_page.dart';
+import 'package:edu_app/src/controller/courses_button_index.dart';
+import 'package:edu_app/src/ui/pages/colors.dart';
+import 'package:edu_app/src/ui/pages/home_page/subjects_view.dart';
+import 'package:edu_app/src/ui/pages/one_couse_page/one_course_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
@@ -380,7 +380,7 @@ class _HomePageState extends State<HomePage> {
                   ),
 
                   /// subjects view
-                  Container(
+                  SizedBox(
                     height: heightSize * 0.4,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
@@ -388,7 +388,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Get.to(() => OneCoursePage());
+                            Get.to(() => const OneCoursePage());
                           },
                           child: SubjectsView(
                             color: MyColors.myBlue,
@@ -401,7 +401,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.to(() => OneCoursePage());
+                            Get.to(() => const OneCoursePage());
                           },
                           child: SubjectsView(
                             color: MyColors.myOrange,
@@ -414,7 +414,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.to(() => OneCoursePage());
+                            Get.to(() => const OneCoursePage());
                           },
                           child: SubjectsView(
                             color: MyColors.myTeal,
@@ -427,7 +427,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.to(() => OneCoursePage());
+                            Get.to(() => const OneCoursePage());
                           },
                           child: SubjectsView(
                             color: MyColors.myOlive,
@@ -440,7 +440,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.to(() => OneCoursePage());
+                            Get.to(() => const OneCoursePage());
                           },
                           child: SubjectsView(
                             color: MyColors.myGreen,

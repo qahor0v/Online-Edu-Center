@@ -1,8 +1,8 @@
 // ignore_for_file: unrelated_type_equality_checks
 
-import 'package:education/src/controller/tabbar_index.dart';
-import 'package:education/src/ui/pages/colors.dart';
-import 'package:education/src/ui/pages/one_couse_page/one_course_page.dart';
+import 'package:edu_app/src/controller/tabbar_index.dart';
+import 'package:edu_app/src/ui/pages/colors.dart';
+import 'package:edu_app/src/ui/pages/one_couse_page/one_course_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';

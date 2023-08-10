@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="914e42f4-fdff-45f4-910d-d984185f4de8" name="Changes" comment="project architecture changed">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis_options.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/google-services.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/kotlin/com/example/education/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-v21/launch_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values-night/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/profile/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/BreeSerif.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/fonts/BreeSerif.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/achieving_goals.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/achieving_goals.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/boy.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/boy.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/doing_tasks.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/doing_tasks.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/empty_page.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/empty_page.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/girl_profile.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/girl_profile.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/google.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/google.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/greengirl.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/greengirl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/happy.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/happy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/hiking.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/hiking.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/man_profile.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/man_profile.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/profile_boy.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/profile_boy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/reading.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/reading.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/readme.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/readme.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/remote_lesson.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/remote_lesson.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/signin.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/signin.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/signup.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/signup.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/subjects/bio.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/subjects/bio.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/subjects/chemistry.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/subjects/chemistry.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/subjects/english.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/subjects/english.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/subjects/math.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/subjects/math.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/subjects/physics.png" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/assets/images/subjects/physics.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Base.lproj/LaunchScreen.storyboard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Base.lproj/Main.storyboard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/GoogleService-Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Runner-Bridging-Header.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/RunnerTests/RunnerTests.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/firebase_app_id_file.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/firebase_options.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/firebase_options.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/config/router/app_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/config/router/app_router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/controller/auth_checker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/controller/auth_checker.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/controller/change_mode.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/controller/change_mode.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/controller/courses_button_index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/controller/courses_button_index.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/controller/sign_up_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/controller/sign_up_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/controller/switch_visibility.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/controller/switch_visibility.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/controller/tabbar_index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/controller/tabbar_index.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/repository/exceptions/forbidden_exception.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/repository/exceptions/forbidden_exception.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/repository/exceptions/unauthorized_exception.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/repository/exceptions/unauthorized_exception.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/repository/models/sign_in_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/repository/models/sign_in_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/repository/models/user_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/repository/models/user_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/repository/network/api_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/repository/network/api_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/repository/network/apis.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/repository/network/apis.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/repository/network/authentication.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/repository/network/authentication.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/repository/service/dialog_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/repository/service/dialog_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/repository/service/do_sign_in.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/repository/service/do_sign_in.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/repository/service/do_sign_up.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/repository/service/do_sign_up.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/repository/service/sign_in_validate_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/repository/service/sign_in_validate_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/repository/service/sign_up_validate_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/repository/service/sign_up_validate_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/bookmark_page/bookmark_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/bookmark_page/bookmark_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/bottom_navbar_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/bottom_navbar_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/colors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/colors.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/home_page/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/home_page/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/home_page/subjects_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/home_page/subjects_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/intro_pages/intro_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/intro_pages/intro_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/intro_pages/liquid_swipe_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/intro_pages/liquid_swipe_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/my_courses_page/courses_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/my_courses_page/courses_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/my_courses_page/my_courses_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/my_courses_page/my_courses_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/notification_page/notification_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/notification_page/notification_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/one_couse_page/one_course_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/one_couse_page/one_course_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/profile_page/profile_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/profile_page/profile_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/sign_in_up_pages/sign_in_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/sign_in_up_pages/sign_in_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/pages/sign_in_up_pages/sign_up_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/edu_app/lib/src/ui/pages/sign_in_up_pages/sign_up_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2TlnTH0nzNRFvgN6dJwqQ2Y7Nhl" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/src/Flutter/projects/education&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\src\Flutter\projects\education\edu_app" />
+      <recent name="C:\src\Flutter\projects\education\lib\src\ui" />
+      <recent name="C:\src\Flutter\projects\education\lib\src\repository" />
+      <recent name="C:\src\Flutter\projects\education\lib\src\controller" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="914e42f4-fdff-45f4-910d-d984185f4de8" name="Changes" comment="" />
+      <created>1691626541238</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1691626541238</updated>
+    </task>
+    <task id="LOCAL-00001" summary="project architecture changed">
+      <created>1691629177431</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1691629177431</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="project architecture changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="project architecture changed" />
+  </component>
+</project>

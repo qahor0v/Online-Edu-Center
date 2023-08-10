@@ -1,14 +1,12 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:education/src/controller/auth_checker.dart';
-import 'package:education/src/repository/exceptions/forbidden_exception.dart';
-import 'package:education/src/repository/exceptions/unauthorized_exception.dart';
-import 'package:education/src/repository/models/sign_in_model.dart';
-import 'package:education/src/repository/network/authentication.dart';
-import 'package:education/src/ui/pages/bottom_navbar_view.dart';
+import 'package:edu_app/src/controller/auth_checker.dart';
+import 'package:edu_app/src/repository/exceptions/forbidden_exception.dart';
+import 'package:edu_app/src/repository/exceptions/unauthorized_exception.dart';
+import 'package:edu_app/src/repository/models/sign_in_model.dart';
+import 'package:edu_app/src/repository/network/authentication.dart';
+import 'package:edu_app/src/ui/pages/bottom_navbar_view.dart';
 import 'package:get/get.dart';
-
 import 'sign_in_validate_service.dart';
 
 class DoSignIn {

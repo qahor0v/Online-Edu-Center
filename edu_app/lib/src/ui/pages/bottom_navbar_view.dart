@@ -1,5 +1,5 @@
-import 'package:education/src/ui/pages/bookmark_page/bookmark_page.dart';
-import 'package:education/src/ui/pages/notification_page/notification_page.dart';
+  import 'package:edu_app/src/ui/pages/bookmark_page/bookmark_page.dart';
+import 'package:edu_app/src/ui/pages/notification_page/notification_page.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';

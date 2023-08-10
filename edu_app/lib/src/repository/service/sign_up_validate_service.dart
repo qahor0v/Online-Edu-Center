@@ -1,5 +1,5 @@
-import 'package:education/src/controller/sign_up_controller.dart';
-import 'package:get/get.dart';
+import 'package:edu_app/src/controller/sign_up_controller.dart';
+ import 'package:get/get.dart';
 
 class SignUpValidateService {
   String? name;

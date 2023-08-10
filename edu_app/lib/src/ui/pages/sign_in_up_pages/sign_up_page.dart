@@ -1,7 +1,7 @@
-import 'package:education/src/controller/sign_up_controller.dart';
-import 'package:education/src/controller/switch_visibility.dart';
-import 'package:education/src/repository/service/do_sign_up.dart';
-import 'package:education/src/ui/pages/sign_in_up_pages/sign_in_page.dart';
+import 'package:edu_app/src/controller/sign_up_controller.dart';
+import 'package:edu_app/src/controller/switch_visibility.dart';
+import 'package:edu_app/src/repository/service/do_sign_up.dart';
+import 'package:edu_app/src/ui/pages/sign_in_up_pages/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -431,7 +431,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       TextButton(
                         onPressed: () {
                           Navigator.pushReplacementNamed(
-                              context, SignInPage.id);
+                            context,
+                            SignInPage.id,
+                          );
                         },
                         child: const Text(
                           "Sign in",

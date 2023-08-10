@@ -1,5 +1,5 @@
-import 'package:education/src/controller/auth_checker.dart';
-import 'package:get/get.dart';
+import 'package:edu_app/src/controller/auth_checker.dart';
+ import 'package:get/get.dart';
 
 class SignInValidateService {
   String? userName;

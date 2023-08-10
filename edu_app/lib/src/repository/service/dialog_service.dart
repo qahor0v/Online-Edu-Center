@@ -1,4 +1,4 @@
-import 'package:education/src/ui/pages/sign_in_up_pages/sign_in_page.dart';
+import 'package:edu_app/src/ui/pages/sign_in_up_pages/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dialogs/flutter_dialogs.dart';
 import 'package:get/get.dart';

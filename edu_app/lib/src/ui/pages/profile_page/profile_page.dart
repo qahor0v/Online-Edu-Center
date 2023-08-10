@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:education/src/ui/pages/colors.dart';
+ import 'package:edu_app/src/ui/pages/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';

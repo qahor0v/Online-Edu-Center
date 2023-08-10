@@ -1,8 +1,8 @@
-import 'package:education/src/controller/auth_checker.dart';
-import 'package:education/src/controller/switch_visibility.dart';
-import 'package:education/src/repository/service/do_sign_in.dart';
-import 'package:education/src/ui/pages/sign_in_up_pages/sign_up_page.dart';
-  import 'package:flutter/material.dart';
+import 'package:edu_app/src/controller/auth_checker.dart';
+import 'package:edu_app/src/controller/switch_visibility.dart';
+import 'package:edu_app/src/repository/service/do_sign_in.dart';
+import 'package:edu_app/src/ui/pages/sign_in_up_pages/sign_up_page.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SignInPage extends StatelessWidget {
@@ -249,7 +249,9 @@ class SignInPage extends StatelessWidget {
                         child: const Text(
                           "Ro'yhatdan o'ting",
                           style: TextStyle(
-                              color: Colors.blue, fontWeight: FontWeight.bold),
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],

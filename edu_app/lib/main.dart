@@ -1,5 +1,6 @@
-import 'package:education/src/config/router/app_router.dart';
-import 'package:education/src/ui/pages/sign_in_up_pages/sign_in_page.dart';
+
+import 'package:edu_app/src/config/router/app_router.dart';
+import 'package:edu_app/src/ui/pages/sign_in_up_pages/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
