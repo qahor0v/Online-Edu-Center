@@ -1,11 +1,14 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
+import 'package:education/src/controller/auth_checker.dart';
+import 'package:education/src/repository/exceptions/forbidden_exception.dart';
+import 'package:education/src/repository/exceptions/unauthorized_exception.dart';
+import 'package:education/src/repository/models/sign_in_model.dart';
+import 'package:education/src/repository/network/authentication.dart';
+import 'package:education/src/ui/pages/bottom_navbar_view.dart';
 import 'package:get/get.dart';
-import '../data/exceptions/forbidden_exception.dart';
-import '../data/exceptions/unauthorized_exception.dart';
-import '../data/models/sign_in_model.dart';
-import '../data/network/authentication.dart';
-import '../getx_controllers/auth_checker.dart';
-import '../pages/bottom_navbar_view.dart';
+
 import 'sign_in_validate_service.dart';
 
 class DoSignIn {
@@ -29,22 +32,22 @@ class DoSignIn {
       try {
         await Authenticate.signIn(userName!, password!, model.toJson());
         authCheckController.changeValue();
-        Get.to(() => BottomNavBarView());
+        Get.to(() => const BottomNavBarView());
       } catch (e) {
         if (e is UnauthorizedException) {
           authCheckController.userNameChecker.value = "Check the username";
           authCheckController.passwordChecker.value = "Check the password";
-          print('Unauthorized Error: ${e.message}');
+          log('Unauthorized Error: ${e.message}');
         } else if (e is ForbiddenException) {
           authCheckController.userNameChecker.value =
               "Forbidden: Access denied";
           authCheckController.passwordChecker.value =
               "Forbidden: Access denied";
-          print('Forbidden Error: ${e.message}');
+          log('Forbidden Error: ${e.message}');
         } else if (e is DioException) {
           authCheckController.userNameChecker.value = "Check the username";
           authCheckController.passwordChecker.value = "Check the password";
-          print('DioError: ${e.message}');
+          log('DioError: ${e.message}');
         }
       }
     }

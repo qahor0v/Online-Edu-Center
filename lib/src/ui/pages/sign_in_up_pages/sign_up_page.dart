@@ -1,20 +1,30 @@
-import 'package:education/getx_controllers/sign_up_controller.dart';
-import 'package:education/pages/sign_in_up_pages/sign_in_page.dart';
+import 'package:education/src/controller/sign_up_controller.dart';
+import 'package:education/src/controller/switch_visibility.dart';
+import 'package:education/src/repository/service/do_sign_up.dart';
+import 'package:education/src/ui/pages/sign_in_up_pages/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../getx_controllers/switch_visibility.dart';
-import '../../service/do_sign_up.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   static const String id = "sign_up_page";
 
-  SignUpPage({Key? key}) : super(key: key);
+  const SignUpPage({Key? key}) : super(key: key);
 
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _nameController = TextEditingController();
+
   final TextEditingController _lastNameController = TextEditingController();
+
   final TextEditingController _userNameController = TextEditingController();
+
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
+
   final TextEditingController _passwordRepeatController =
       TextEditingController();
 
@@ -63,7 +73,7 @@ class SignUpPage extends StatelessWidget {
                   top: 20, bottom: 20, left: 25, right: 25),
               child: ListView(
                 children: [
-                  Container(
+                  SizedBox(
                     height: widthSize * 0.4,
                     width: widthSize * 0.4,
                     child: const Image(
@@ -79,7 +89,7 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   signUpController.nameChecker.value.isEmpty
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : Text(
                           signUpController.nameChecker.value,
                           style: const TextStyle(
@@ -96,7 +106,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     child: TextField(
                       controller: _nameController,
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: InputBorder.none,
@@ -116,7 +126,7 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   signUpController.lastNameChecker.value.isEmpty
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : Text(
                           signUpController.lastNameChecker.value,
                           style: const TextStyle(
@@ -133,7 +143,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     child: TextField(
                       controller: _lastNameController,
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: InputBorder.none,
@@ -153,7 +163,7 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   signUpController.userNameChecker.value.isEmpty
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : Text(
                           signUpController.userNameChecker.value,
                           style: const TextStyle(
@@ -190,7 +200,7 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   signUpController.emailChecker.value.isEmpty
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : Text(
                           signUpController.emailChecker.value,
                           style: const TextStyle(
@@ -227,7 +237,7 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   signUpController.passwordChecker.value.isEmpty
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : Text(
                           signUpController.passwordChecker.value,
                           style: const TextStyle(
@@ -264,8 +274,8 @@ class SignUpPage extends StatelessWidget {
                             controller.changeVisibility();
                           },
                           icon: controller.isVisible.value
-                              ? Icon(Icons.visibility)
-                              : Icon(Icons.visibility_off),
+                              ? const Icon(Icons.visibility)
+                              : const Icon(Icons.visibility_off),
                         ),
                       ],
                     ),
@@ -280,7 +290,7 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   signUpController.passwordRepeatChecker.value.isEmpty
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : Text(
                           signUpController.passwordRepeatChecker.value,
                           style: const TextStyle(
@@ -317,8 +327,8 @@ class SignUpPage extends StatelessWidget {
                             controller.changeVisibility();
                           },
                           icon: controller.isVisible.value
-                              ? Icon(Icons.visibility)
-                              : Icon(Icons.visibility_off),
+                              ? const Icon(Icons.visibility)
+                              : const Icon(Icons.visibility_off),
                         ),
                       ],
                     ),
@@ -365,8 +375,8 @@ class SignUpPage extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 8),
-                            child: Text("YOKI"),
+                            margin: const EdgeInsets.symmetric(horizontal: 8),
+                            child: const Text("YOKI"),
                           ),
                           Expanded(
                             child: Divider(
@@ -384,7 +394,7 @@ class SignUpPage extends StatelessWidget {
                   /// for social media
                   GestureDetector(
                     child: Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       height: 48,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
@@ -426,7 +436,9 @@ class SignUpPage extends StatelessWidget {
                         child: const Text(
                           "Sign in",
                           style: TextStyle(
-                              color: Colors.blue, fontWeight: FontWeight.bold),
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
@@ -435,8 +447,8 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
             signUpController.check.value
-                ? Center(child: CircularProgressIndicator())
-                : SizedBox.shrink(),
+                ? const Center(child: CircularProgressIndicator())
+                : const SizedBox.shrink(),
           ],
         ),
       ),

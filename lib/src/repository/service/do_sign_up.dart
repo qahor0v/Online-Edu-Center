@@ -1,9 +1,12 @@
-import 'package:education/service/sign_up_validate_service.dart';
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:education/src/controller/sign_up_controller.dart';
+import 'package:education/src/repository/models/user_model.dart';
+import 'package:education/src/repository/network/authentication.dart';
+import 'package:education/src/repository/service/sign_up_validate_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../data/models/user_model.dart';
-import '../data/network/authentication.dart';
-import '../getx_controllers/sign_up_controller.dart';
+
 import 'dialog_service.dart';
 
 class DoSignUp {

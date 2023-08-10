@@ -1,9 +1,9 @@
-import 'package:education/getx_controllers/switch_visibility.dart';
-import 'package:education/pages/sign_in_up_pages/sign_up_page.dart';
-import 'package:education/service/do_sign_in.dart';
-import 'package:flutter/material.dart';
+import 'package:education/src/controller/auth_checker.dart';
+import 'package:education/src/controller/switch_visibility.dart';
+import 'package:education/src/repository/service/do_sign_in.dart';
+import 'package:education/src/ui/pages/sign_in_up_pages/sign_up_page.dart';
+  import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../getx_controllers/auth_checker.dart';
 
 class SignInPage extends StatelessWidget {
   static const String id = "sign_in_page";
@@ -46,7 +46,7 @@ class SignInPage extends StatelessWidget {
                   top: 20, bottom: 20, left: 25, right: 25),
               child: ListView(
                 children: [
-                  Container(
+                  SizedBox(
                     height: widthSize * 0.4,
                     width: widthSize * 0.4,
                     child: const Image(
@@ -64,7 +64,7 @@ class SignInPage extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   authCheckController.userNameChecker.value.isEmpty
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : Text(
                           authCheckController.userNameChecker.value,
                           style: const TextStyle(
@@ -81,7 +81,7 @@ class SignInPage extends StatelessWidget {
                     ),
                     child: TextField(
                       controller: _usernameController,
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: InputBorder.none,
@@ -101,7 +101,7 @@ class SignInPage extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   authCheckController.passwordChecker.value.isEmpty
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : Text(
                           authCheckController.passwordChecker.value,
                           style: const TextStyle(
@@ -138,8 +138,8 @@ class SignInPage extends StatelessWidget {
                             controller.changeVisibility();
                           },
                           icon: controller.isVisible.value
-                              ? Icon(Icons.visibility)
-                              : Icon(Icons.visibility_off),
+                              ? const Icon(Icons.visibility)
+                              : const Icon(Icons.visibility_off),
                         ),
                       ],
                     ),
@@ -186,8 +186,8 @@ class SignInPage extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 8),
-                            child: Text("YOKI"),
+                            margin: const EdgeInsets.symmetric(horizontal: 8),
+                            child: const Text("YOKI"),
                           ),
                           Expanded(
                             child: Divider(
@@ -205,7 +205,7 @@ class SignInPage extends StatelessWidget {
                   /// for social media
                   GestureDetector(
                     child: Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       height: 48,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
@@ -258,8 +258,8 @@ class SignInPage extends StatelessWidget {
               ),
             ),
             authCheckController.check.value
-                ? Center(child: CircularProgressIndicator())
-                : SizedBox.shrink(),
+                ? const Center(child: CircularProgressIndicator())
+                : const SizedBox.shrink(),
           ],
         ),
       ),

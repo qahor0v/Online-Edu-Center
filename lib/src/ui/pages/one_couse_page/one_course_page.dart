@@ -1,4 +1,4 @@
-import 'package:education/pages/colors.dart';
+import 'package:education/src/ui/pages/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
@@ -6,12 +6,12 @@ import 'package:iconly/iconly.dart';
 class OneCoursePage extends StatelessWidget {
   static const String id = "one_course_page";
 
-  OneCoursePage({Key? key}) : super(key: key);
+  const OneCoursePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double screenHeight = Get.height;
-    double screenWidth = Get.width;
+    //double screenWidth = Get.width;
     return DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -22,7 +22,7 @@ class OneCoursePage extends StatelessWidget {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(IconlyLight.arrow_left),
+              icon: const Icon(IconlyLight.arrow_left),
             ),
             title: Text(
               "Mathematics",
@@ -31,7 +31,7 @@ class OneCoursePage extends StatelessWidget {
             ),
             actions: [
               Container(
-                padding: EdgeInsets.all(15),
+                padding: const EdgeInsets.all(15),
                 child: CircleAvatar(
                   backgroundColor: MyColors.myOrange,
                   child: const Icon(
@@ -45,7 +45,7 @@ class OneCoursePage extends StatelessWidget {
             centerTitle: true,
           ),
           body: Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               children: [
                 _headingContainer(),
@@ -78,7 +78,8 @@ class OneCoursePage extends StatelessWidget {
                               ),
                               const SizedBox(width: 10),
                               Container(
-                                padding: EdgeInsets.only(left: 5, right: 5),
+                                padding:
+                                    const EdgeInsets.only(left: 5, right: 5),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: Colors.white.withOpacity(0.4),
@@ -155,7 +156,7 @@ class OneCoursePage extends StatelessWidget {
                     child: Row(
                       children: [
                         Container(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               top: 5, bottom: 5, left: 5, right: 5),
                           child: CircleAvatar(
                             radius: 20,
@@ -184,11 +185,11 @@ class OneCoursePage extends StatelessWidget {
                   flex: 3,
                   child: Container(
                     height: screenHeight * 0.1 * 0.8,
-                    margin: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
                         backgroundColor: MyColors.myBlue,
-                        onPrimary: Colors.white,
                       ),
                       onPressed: () {},
                       child: const Text("Buy Now"),
@@ -212,7 +213,7 @@ class OneCoursePage extends StatelessWidget {
         children: [
           Expanded(
               child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
               image: AssetImage("assets/images/subjects/math.png"),
             )),
@@ -221,61 +222,57 @@ class OneCoursePage extends StatelessWidget {
             height: 60,
             decoration: BoxDecoration(
               color: MyColors.myBlue,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomRight: Radius.circular(30),
                 bottomLeft: Radius.circular(30),
               ),
             ),
             child: Center(
               child: Container(
-                padding: EdgeInsets.only(left: 20, right: 10),
+                padding: const EdgeInsets.only(left: 20, right: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      child: Row(
-                        children: [
-                          IconButton(
-                            padding: EdgeInsets.only(right: 10),
-                            color: Colors.white,
-                            iconSize: 40,
-                            onPressed: () {},
-                            icon: const Icon(IconlyBold.play),
-                          ),
-                          Text(
-                            "06:25 / 17:45",
-                            style: TextStyle(
-                                color: MyColors.textColor,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
-                      ),
+                    Row(
+                      children: [
+                        IconButton(
+                          padding: const EdgeInsets.only(right: 10),
+                          color: Colors.white,
+                          iconSize: 40,
+                          onPressed: () {},
+                          icon: const Icon(IconlyBold.play),
+                        ),
+                        Text(
+                          "06:25 / 17:45",
+                          style: TextStyle(
+                              color: MyColors.textColor,
+                              fontWeight: FontWeight.bold),
+                        )
+                      ],
                     ),
-                    Container(
-                      child: Row(
-                        children: [
-                          IconButton(
-                            padding: EdgeInsets.only(right: 10),
-                            color: Colors.white,
-                            iconSize: 40,
-                            onPressed: () {},
-                            icon: const Icon(
-                              IconlyBold.volume_up,
-                              size: 25,
-                            ),
+                    Row(
+                      children: [
+                        IconButton(
+                          padding: const EdgeInsets.only(right: 10),
+                          color: Colors.white,
+                          iconSize: 40,
+                          onPressed: () {},
+                          icon: const Icon(
+                            IconlyBold.volume_up,
+                            size: 25,
                           ),
-                          IconButton(
-                            padding: EdgeInsets.only(right: 10),
-                            color: Colors.white,
-                            iconSize: 40,
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.fullscreen,
-                              size: 30,
-                            ),
+                        ),
+                        IconButton(
+                          padding: const EdgeInsets.only(right: 10),
+                          color: Colors.white,
+                          iconSize: 40,
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.fullscreen,
+                            size: 30,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -290,8 +287,8 @@ class OneCoursePage extends StatelessWidget {
   Widget _playlistContainer(topic, duration) {
     return Container(
       height: 80,
-      padding: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
-      margin: EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+      margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.white,
@@ -299,7 +296,7 @@ class OneCoursePage extends StatelessWidget {
       child: Row(
         children: [
           IconButton(
-            padding: EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.only(right: 10),
             color: MyColors.myBlue,
             iconSize: 40,
             onPressed: () {},
@@ -331,7 +328,7 @@ class OneCoursePage extends StatelessWidget {
             ),
           ),
           IconButton(
-            padding: EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.only(right: 10),
             color: MyColors.myBlue,
             iconSize: 30,
             onPressed: () {},

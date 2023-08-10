@@ -1,4 +1,6 @@
-import 'package:education/pages/colors.dart';
+import 'dart:developer';
+
+import 'package:education/src/ui/pages/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
@@ -23,34 +25,38 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             actions: [
-              Container(
+              SizedBox(
                 //color: Colors.red,
                 width: double.infinity,
                 child: Column(
                   children: [
                     TextButton(
                       onPressed: () {
-                        print("xfxfsbdf");
+                        log("xfxfsbdf");
                       },
                       child: const Text(
                         "Uzbek",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                     TextButton(
                       onPressed: () {
-                        print("xfxfsbdf");
+                        log("xfxfsbdf");
                       },
                       child: const Text(
                         "Russian",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                     TextButton(
                       onPressed: () {
-                        print("xfxfsbdf");
+                        log("xfxfsbdf");
                       },
                       child: const Text(
                         "English",
@@ -80,11 +86,11 @@ class ProfilePage extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          actions: [
-            Container(
+          actions: const [
+            SizedBox(
               width: double.infinity,
-              child: const Text(
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+              child: Text(
+                "Lorem Ipsum is simply dummy text of the loging and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown loger took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 textAlign: TextAlign.center,
               ),
@@ -110,15 +116,18 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             actions: [
-              Container(
+              SizedBox(
                 width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Our phone numbers",style: TextStyle(fontWeight: FontWeight.bold),),
+                    const Text(
+                      "Our phone numbers",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     TextButton(
                       onPressed: () {
-                        print("xfxfsbdf");
+                        log("xfxfsbdf");
                       },
                       child: const Text(
                         "+9890-359-15-27",
@@ -126,10 +135,13 @@ class ProfilePage extends StatelessWidget {
                             fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                     ),
-                    Text("Our telegram contact",style: TextStyle(fontWeight: FontWeight.bold),),
+                    const Text(
+                      "Our telegram contact",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     TextButton(
                       onPressed: () {
-                        print("xfxfsbdf");
+                        log("xfxfsbdf");
                       },
                       child: const Text(
                         "https://t.me/devFlCy",
@@ -137,10 +149,13 @@ class ProfilePage extends StatelessWidget {
                             fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                     ),
-                    Text("Our email",style: TextStyle(fontWeight: FontWeight.bold),),
+                    const Text(
+                      "Our email",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     TextButton(
                       onPressed: () {
-                        print("xfxfsbdf");
+                        log("xfxfsbdf");
                       },
                       child: const Text(
                         "ronaldrask1@gmail.com",
@@ -171,7 +186,7 @@ class ProfilePage extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: ListView(
           children: [
             Column(
@@ -231,7 +246,7 @@ class ProfilePage extends StatelessWidget {
                   height: 20,
                 ),
                 Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: MyColors.myBackground,
                     borderRadius: BorderRadius.circular(20),
@@ -240,7 +255,7 @@ class ProfilePage extends StatelessWidget {
                     children: [
                       ListTile(
                         leading: Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color: Colors.grey.withOpacity(0.3),
@@ -254,7 +269,7 @@ class ProfilePage extends StatelessWidget {
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Balance"),
+                            const Text("Balance"),
                             Text(
                               "300.000 so'm",
                               style: TextStyle(
@@ -267,7 +282,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                       ListTile(
                         leading: Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color: Colors.grey.withOpacity(0.3),
@@ -278,11 +293,11 @@ class ProfilePage extends StatelessWidget {
                           ),
                         ),
                         onTap: () {},
-                        title: Text("Chat"),
+                        title: const Text("Chat"),
                       ),
                       ListTile(
                         leading: Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color: Colors.grey.withOpacity(0.3),
@@ -295,11 +310,11 @@ class ProfilePage extends StatelessWidget {
                         onTap: () {
                           _androiDialog(context);
                         },
-                        title: Text("Language"),
+                        title: const Text("Language"),
                       ),
                       ListTile(
                         leading: Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color: Colors.grey.withOpacity(0.3),
@@ -312,11 +327,11 @@ class ProfilePage extends StatelessWidget {
                         onTap: () {
                           _aboutUsDialog(context);
                         },
-                        title: Text("About us"),
+                        title: const Text("About us"),
                       ),
                       ListTile(
                         leading: Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color: Colors.grey.withOpacity(0.3),
@@ -327,11 +342,11 @@ class ProfilePage extends StatelessWidget {
                           ),
                         ),
                         onTap: () {},
-                        title: Text("Change phone / email"),
+                        title: const Text("Change phone / email"),
                       ),
                       ListTile(
                         leading: Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color: Colors.grey.withOpacity(0.3),
@@ -344,11 +359,11 @@ class ProfilePage extends StatelessWidget {
                         onTap: () {
                           _contactDialog(context);
                         },
-                        title: Text("Contact"),
+                        title: const Text("Contact"),
                       ),
                       ListTile(
                         leading: Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color: Colors.grey.withOpacity(0.3),
@@ -359,7 +374,7 @@ class ProfilePage extends StatelessWidget {
                           ),
                         ),
                         onTap: () {},
-                        title: Text("Change mode"),
+                        title: const Text("Change mode"),
                       ),
                     ],
                   ),

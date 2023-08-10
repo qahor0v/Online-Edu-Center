@@ -1,10 +1,11 @@
-import 'package:education/pages/colors.dart';
-import 'package:education/pages/one_couse_page/one_course_page.dart';
+// ignore_for_file: unrelated_type_equality_checks
+
+import 'package:education/src/controller/tabbar_index.dart';
+import 'package:education/src/ui/pages/colors.dart';
+import 'package:education/src/ui/pages/one_couse_page/one_course_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
-
-import '../../getx_controllers/tabbar_index.dart';
 import 'courses_view.dart';
 
 class MyCoursesPage extends StatefulWidget {
@@ -20,13 +21,13 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
   @override
   Widget build(BuildContext context) {
     TabBarIndexController controller = Get.put(TabBarIndexController());
-    double _height = MediaQuery.of(context).size.height;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: MyColors.myBackground,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {},
-          icon: Icon(IconlyLight.arrow_left),
+          icon: const Icon(IconlyLight.arrow_left),
         ),
         actions: [
           IconButton(
@@ -46,11 +47,11 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
         initialIndex: 0,
         length: 3,
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: ListView(
             children: [
               TabBar(
-                labelPadding: EdgeInsets.only(right: 20),
+                labelPadding: const EdgeInsets.only(right: 20),
                 indicatorColor: Colors.transparent,
                 onTap: (int myIndex) {
                   setState(() {
@@ -130,10 +131,11 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                           Text(
                             "Ongoing",
                             style: TextStyle(
-                                color: controller.index == 1
-                                    ? Colors.white
-                                    : MyColors.textColor,
-                                fontWeight: FontWeight.w600),
+                              color: controller.index == 1
+                                  ? Colors.white
+                                  : MyColors.textColor,
+                              fontWeight: FontWeight.w600,
+                            ),
                           )
                         ],
                       ),
@@ -170,10 +172,11 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                           Text(
                             "Complate",
                             style: TextStyle(
-                                color: controller.index == 2
-                                    ? Colors.white
-                                    : MyColors.textColor,
-                                fontWeight: FontWeight.w600),
+                              color: controller.index == 2
+                                  ? Colors.white
+                                  : MyColors.textColor,
+                              fontWeight: FontWeight.w600,
+                            ),
                           )
                         ],
                       ),
@@ -184,8 +187,8 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
               const SizedBox(
                 height: 25,
               ),
-              Container(
-                height: _height,
+              SizedBox(
+                height: height,
                 child: TabBarView(children: [
                   CousesView(),
                   CousesView(),
@@ -201,7 +204,7 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
 
   Widget _container(image, color, subjectName, description, complated) {
     return Container(
-      margin: EdgeInsets.only(bottom: 30),
+      margin: const EdgeInsets.only(bottom: 30),
       height: 150,
       width: double.infinity,
       decoration: BoxDecoration(
@@ -220,14 +223,14 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
           Expanded(
             flex: 3,
             child: Container(
-              padding: EdgeInsets.only(top: 20, bottom: 20),
+              padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     subjectName,
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold),
@@ -237,14 +240,14 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                   ),
                   Text(
                     description,
-                    style: TextStyle(color: Colors.white, fontSize: 11),
+                    style: const TextStyle(color: Colors.white, fontSize: 11),
                   ),
                   const SizedBox(
                     height: 6,
                   ),
                   Text(
                     "Complated $complated%",
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 15,
                         fontWeight: FontWeight.w500),

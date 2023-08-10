@@ -1,11 +1,11 @@
-import 'package:education/pages/bookmark_page/bookmark_page.dart';
-import 'package:education/pages/notification_page/notification_page.dart';
-import 'package:education/pages/profile_page/profile_page.dart';
+import 'package:education/src/ui/pages/bookmark_page/bookmark_page.dart';
+import 'package:education/src/ui/pages/notification_page/notification_page.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'home_page/home_page.dart';
 import 'my_courses_page/my_courses_page.dart';
+import 'profile_page/profile_page.dart';
 
 class BottomNavBarView extends StatefulWidget {
   static const String id = "bottom_nav_bar";
@@ -37,7 +37,7 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
             _currentIndex = index;
           });
         },
-        children: [
+        children: const [
           HomePage(),
           BookmarkPage(),
           MyCoursesPage(),
@@ -51,29 +51,32 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
         onTap: (index) {
           _currentIndex = index;
           _pageController!.animateToPage(index,
-              duration: Duration(milliseconds: 100), curve: Curves.easeIn);
+              duration: const Duration(milliseconds: 100),
+              curve: Curves.easeIn);
         },
         items: [
           /// Home
           SalomonBottomBarItem(
             icon: Icon(_currentIndex == 0 ? IconlyBold.home : IconlyLight.home),
-            title: Text("Home"),
+            title: const Text("Home"),
             selectedColor: Colors.blue,
           ),
 
           /// Bookmark
           SalomonBottomBarItem(
-            icon: Icon(_currentIndex == 1
-                ? IconlyBold.bookmark
-                : IconlyLight.bookmark),
-            title: Text("Bookmark"),
+            icon: Icon(
+              _currentIndex == 1 ? IconlyBold.bookmark : IconlyLight.bookmark,
+            ),
+            title: const Text("Bookmark"),
             selectedColor: Colors.blue,
           ),
 
           /// Courses
           SalomonBottomBarItem(
-            icon: Icon(_currentIndex == 2 ? IconlyBold.work : IconlyLight.work),
-            title: Text("Courses"),
+            icon: Icon(
+              _currentIndex == 2 ? IconlyBold.work : IconlyLight.work,
+            ),
+            title: const Text("Courses"),
             selectedColor: Colors.blue,
           ),
 
@@ -82,15 +85,16 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
             icon: Icon(_currentIndex == 3
                 ? IconlyBold.notification
                 : IconlyLight.notification),
-            title: Text("Notification"),
+            title: const Text("Notification"),
             selectedColor: Colors.blue,
           ),
 
           /// Profile
           SalomonBottomBarItem(
             icon: Icon(
-                _currentIndex == 4 ? IconlyBold.profile : IconlyLight.profile),
-            title: Text("Profile"),
+              _currentIndex == 4 ? IconlyBold.profile : IconlyLight.profile,
+            ),
+            title: const Text("Profile"),
             selectedColor: Colors.blue,
           ),
         ],
