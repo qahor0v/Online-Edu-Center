@@ -1,6 +1,6 @@
+import 'package:edu_app/src/config/router/router_utils.dart';
 import 'package:edu_app/src/ui/pages/colors.dart';
- import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
 class OneCoursePage extends StatelessWidget {
@@ -10,8 +10,7 @@ class OneCoursePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = Get.height;
-    //double screenWidth = Get.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -20,7 +19,7 @@ class OneCoursePage extends StatelessWidget {
             backgroundColor: Colors.white,
             leading: IconButton(
               onPressed: () {
-                Get.back();
+                Go(context).close();
               },
               icon: const Icon(IconlyLight.arrow_left),
             ),
@@ -62,7 +61,8 @@ class OneCoursePage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Container(
-                          height: screenHeight * 0.1 * 0.5,
+                          height: screenHeight =
+                              MediaQuery.of(context).size.height * 0.1 * 0.5,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                             color: MyColors.myOrange,

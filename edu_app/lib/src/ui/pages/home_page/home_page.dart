@@ -1,25 +1,20 @@
-import 'package:edu_app/src/controller/courses_button_index.dart';
+import 'package:edu_app/src/config/router/router_utils.dart';
 import 'package:edu_app/src/ui/pages/colors.dart';
 import 'package:edu_app/src/ui/pages/home_page/subjects_view.dart';
 import 'package:edu_app/src/ui/pages/one_couse_page/one_course_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:iconly/iconly.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends HookConsumerWidget {
   static const String id = "home_page";
 
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    CoursesButtonIndexController controller =
-        Get.put(CoursesButtonIndexController());
+  Widget build(BuildContext context, ref) {
+    final controller = useState<int>(0);
     final heightSize = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: MyColors.myBackground,
@@ -152,311 +147,298 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
-          Obx(
-            () => Padding(
-              padding: const EdgeInsets.only(
-                left: 20,
-                right: 20,
-                top: 20,
-                bottom: 20,
-              ),
-              child: Column(
-                children: [
-                  /// courses items
-                  Row(
-                    children: [
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            controller.changeValue(1);
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(10),
-                            height: 55,
-                            decoration: BoxDecoration(
-                              color: controller.buttonIndex.value == 1
-                                  ? const Color(0xff52c2ff)
-                                  : Colors.white,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                  backgroundColor:
-                                      controller.buttonIndex.value == 1
-                                          ? Colors.white
-                                          : const Color(0xff52c2ff),
-                                  radius: 20,
-                                  child: Icon(
-                                    Icons.local_fire_department_outlined,
-                                    color: controller.buttonIndex.value == 1
-                                        ? Colors.blue
-                                        : Colors.white,
-                                  ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+              top: 20,
+              bottom: 20,
+            ),
+            child: Column(
+              children: [
+                /// courses items
+                Row(
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          controller.value = 1;
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          height: 55,
+                          decoration: BoxDecoration(
+                            color: controller.value == 1
+                                ? const Color(0xff52c2ff)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: controller.value == 1
+                                    ? Colors.white
+                                    : const Color(0xff52c2ff),
+                                radius: 20,
+                                child: Icon(
+                                  Icons.local_fire_department_outlined,
+                                  color: controller.value == 1
+                                      ? Colors.blue
+                                      : Colors.white,
                                 ),
-                                const SizedBox(
-                                  width: 5,
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "Barchasi",
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w500,
+                                  color: controller.value == 1
+                                      ? Colors.white
+                                      : MyColors.textColor,
                                 ),
-                                Text(
-                                  "Barchasi",
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: controller.buttonIndex.value == 1
-                                        ? Colors.white
-                                        : MyColors.textColor,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              controller.changeValue(2);
-                            });
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(10),
-                            height: 55,
-                            decoration: BoxDecoration(
-                              color: controller.buttonIndex.value == 2
-                                  ? const Color(0xff52c2ff)
-                                  : Colors.white,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                  backgroundColor:
-                                      controller.buttonIndex.value == 2
-                                          ? Colors.white
-                                          : const Color(0xfff9ae2b),
-                                  radius: 20,
-                                  child: Icon(
-                                    Icons.local_fire_department_outlined,
-                                    color: controller.buttonIndex.value == 2
-                                        ? Colors.blue
-                                        : Colors.white,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "Mashhurlari",
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: controller.buttonIndex.value == 2
-                                        ? Colors.white
-                                        : MyColors.textColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              controller.changeValue(3);
-                            });
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(10),
-                            height: 55,
-                            decoration: BoxDecoration(
-                              color: controller.buttonIndex.value == 3
-                                  ? const Color(0xff52c2ff)
-                                  : Colors.white,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                  backgroundColor:
-                                      controller.buttonIndex.value == 3
-                                          ? Colors.white
-                                          : const Color(0xff7280b3),
-                                  radius: 20,
-                                  child: Icon(
-                                    Icons.local_fire_department_outlined,
-                                    color: controller.buttonIndex.value == 3
-                                        ? Colors.blue
-                                        : Colors.white,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "Yangilari",
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: controller.buttonIndex.value == 3
-                                        ? Colors.white
-                                        : MyColors.textColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              controller.changeValue(4);
-                            });
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(10),
-                            height: 55,
-                            decoration: BoxDecoration(
-                              color: controller.buttonIndex.value == 4
-                                  ? const Color(0xff52c2ff)
-                                  : Colors.white,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                  backgroundColor:
-                                      controller.buttonIndex.value == 4
-                                          ? Colors.white
-                                          : Colors.green,
-                                  radius: 20,
-                                  child: Icon(
-                                    Icons.local_fire_department_outlined,
-                                    color: controller.buttonIndex.value == 4
-                                        ? Colors.blue
-                                        : Colors.white,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "Advance",
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: controller.buttonIndex.value == 4
-                                        ? Colors.white
-                                        : MyColors.textColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-
-                  /// subjects view
-                  SizedBox(
-                    height: heightSize * 0.4,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(() => const OneCoursePage());
-                          },
-                          child: SubjectsView(
-                            color: MyColors.myBlue,
-                            subjectImage: "assets/images/subjects/math.png",
-                            subjectName: "Mathematics",
-                            teacherName: "Sirojiddin",
-                            subjectDuration: "17",
-                            numberOfFiles: "40",
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(() => const OneCoursePage());
-                          },
-                          child: SubjectsView(
-                            color: MyColors.myOrange,
-                            subjectImage: "assets/images/subjects/physics.png",
-                            subjectName: "Physics",
-                            teacherName: "Sirojiddin",
-                            subjectDuration: "17",
-                            numberOfFiles: "40",
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(() => const OneCoursePage());
-                          },
-                          child: SubjectsView(
-                            color: MyColors.myTeal,
-                            subjectImage: "assets/images/subjects/bio.png",
-                            subjectName: "Biology",
-                            teacherName: "Sirojiddin",
-                            subjectDuration: "17",
-                            numberOfFiles: "40",
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(() => const OneCoursePage());
-                          },
-                          child: SubjectsView(
-                            color: MyColors.myOlive,
-                            subjectImage: "assets/images/subjects/english.png",
-                            subjectName: "English",
-                            teacherName: "Sirojiddin",
-                            subjectDuration: "17",
-                            numberOfFiles: "40",
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(() => const OneCoursePage());
-                          },
-                          child: SubjectsView(
-                            color: MyColors.myGreen,
-                            subjectImage:
-                                "assets/images/subjects/chemistry.png",
-                            subjectName: "Chemistry",
-                            teacherName: "Sirojiddin",
-                            subjectDuration: "17",
-                            numberOfFiles: "40",
-                          ),
-                        ),
-                      ],
                     ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          controller.value = 2;
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          height: 55,
+                          decoration: BoxDecoration(
+                            color: controller.value == 2
+                                ? const Color(0xff52c2ff)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: controller.value == 2
+                                    ? Colors.white
+                                    : const Color(0xfff9ae2b),
+                                radius: 20,
+                                child: Icon(
+                                  Icons.local_fire_department_outlined,
+                                  color: controller.value == 2
+                                      ? Colors.blue
+                                      : Colors.white,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "Mashhurlari",
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w500,
+                                  color: controller.value == 2
+                                      ? Colors.white
+                                      : MyColors.textColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          controller.value = 3;
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          height: 55,
+                          decoration: BoxDecoration(
+                            color: controller.value == 3
+                                ? const Color(0xff52c2ff)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: controller.value == 3
+                                    ? Colors.white
+                                    : const Color(0xff7280b3),
+                                radius: 20,
+                                child: Icon(
+                                  Icons.local_fire_department_outlined,
+                                  color: controller.value == 3
+                                      ? Colors.blue
+                                      : Colors.white,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "Yangilari",
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w500,
+                                  color: controller.value == 3
+                                      ? Colors.white
+                                      : MyColors.textColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          controller.value = 4;
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          height: 55,
+                          decoration: BoxDecoration(
+                            color: controller.value == 4
+                                ? const Color(0xff52c2ff)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: controller.value == 4
+                                    ? Colors.white
+                                    : Colors.green,
+                                radius: 20,
+                                child: Icon(
+                                  Icons.local_fire_department_outlined,
+                                  color: controller.value == 4
+                                      ? Colors.blue
+                                      : Colors.white,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "Advance",
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w500,
+                                  color: controller.value == 4
+                                      ? Colors.white
+                                      : MyColors.textColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+
+                /// subjects view
+                SizedBox(
+                  height: heightSize * 0.4,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Go(context).go(const OneCoursePage());
+                        },
+                        child: SubjectsView(
+                          color: MyColors.myBlue,
+                          subjectImage: "assets/images/subjects/math.png",
+                          subjectName: "Mathematics",
+                          teacherName: "Sirojiddin",
+                          subjectDuration: "17",
+                          numberOfFiles: "40",
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Go(context).go(const OneCoursePage());
+                        },
+                        child: SubjectsView(
+                          color: MyColors.myOrange,
+                          subjectImage: "assets/images/subjects/physics.png",
+                          subjectName: "Physics",
+                          teacherName: "Sirojiddin",
+                          subjectDuration: "17",
+                          numberOfFiles: "40",
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Go(context).go(const OneCoursePage());
+                        },
+                        child: SubjectsView(
+                          color: MyColors.myTeal,
+                          subjectImage: "assets/images/subjects/bio.png",
+                          subjectName: "Biology",
+                          teacherName: "Sirojiddin",
+                          subjectDuration: "17",
+                          numberOfFiles: "40",
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Go(context).go(const OneCoursePage());
+                        },
+                        child: SubjectsView(
+                          color: MyColors.myOlive,
+                          subjectImage: "assets/images/subjects/english.png",
+                          subjectName: "English",
+                          teacherName: "Sirojiddin",
+                          subjectDuration: "17",
+                          numberOfFiles: "40",
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Go(context).go(const OneCoursePage());
+                        },
+                        child: SubjectsView(
+                          color: MyColors.myGreen,
+                          subjectImage: "assets/images/subjects/chemistry.png",
+                          subjectName: "Chemistry",
+                          teacherName: "Sirojiddin",
+                          subjectDuration: "17",
+                          numberOfFiles: "40",
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

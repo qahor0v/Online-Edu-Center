@@ -1,8 +1,6 @@
 import 'dart:developer';
-
- import 'package:edu_app/src/ui/pages/colors.dart';
+import 'package:edu_app/src/ui/pages/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -201,8 +199,8 @@ class ProfilePage extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                        height: Get.width * 0.3,
-                        width: Get.width * 0.3,
+                        height: MediaQuery.of(context).size.height * 0.3,
+                        width: MediaQuery.of(context).size.height * 0.3,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: MyColors.myBlue,

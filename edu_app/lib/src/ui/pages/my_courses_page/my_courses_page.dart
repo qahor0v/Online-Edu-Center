@@ -1,26 +1,21 @@
 // ignore_for_file: unrelated_type_equality_checks
 
-import 'package:edu_app/src/controller/tabbar_index.dart';
 import 'package:edu_app/src/ui/pages/colors.dart';
 import 'package:edu_app/src/ui/pages/one_couse_page/one_course_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:iconly/iconly.dart';
 import 'courses_view.dart';
 
-class MyCoursesPage extends StatefulWidget {
+class MyCoursesPage extends HookConsumerWidget {
   static const String id = "courses_page";
 
   const MyCoursesPage({Key? key}) : super(key: key);
 
   @override
-  State<MyCoursesPage> createState() => _MyCoursesPageState();
-}
-
-class _MyCoursesPageState extends State<MyCoursesPage> {
-  @override
-  Widget build(BuildContext context) {
-    TabBarIndexController controller = Get.put(TabBarIndexController());
+  Widget build(BuildContext context, ref) {
+    final controller = useState(0);
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: MyColors.myBackground,
@@ -54,9 +49,7 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                 labelPadding: const EdgeInsets.only(right: 20),
                 indicatorColor: Colors.transparent,
                 onTap: (int myIndex) {
-                  setState(() {
-                    controller.changeValue(myIndex);
-                  });
+                  controller.value = myIndex;
                 },
                 isScrollable: true,
                 tabs: [
@@ -66,7 +59,7 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                           left: 10, right: 20, top: 8, bottom: 8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        color: controller.index == 0
+                        color: controller.value == 0
                             ? MyColors.myBlue
                             : Colors.white,
                       ),
@@ -74,12 +67,12 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           CircleAvatar(
-                            backgroundColor: controller.index == 0
+                            backgroundColor: controller.value == 0
                                 ? Colors.white
                                 : MyColors.myBlue,
                             child: Icon(
                               IconlyLight.document,
-                              color: controller.index == 0
+                              color: controller.value == 0
                                   ? MyColors.myBlue
                                   : Colors.white,
                             ),
@@ -90,7 +83,7 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                           Text(
                             "All",
                             style: TextStyle(
-                                color: controller.index == 0
+                                color: controller.value == 0
                                     ? Colors.white
                                     : MyColors.textColor,
                                 fontWeight: FontWeight.w600),
@@ -107,7 +100,7 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                       //height: 60,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        color: controller.index == 1
+                        color: controller.value == 1
                             ? MyColors.myBlue
                             : Colors.white,
                       ),
@@ -115,12 +108,12 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           CircleAvatar(
-                            backgroundColor: controller.index == 1
+                            backgroundColor: controller.value == 1
                                 ? Colors.white
                                 : MyColors.myOrange,
                             child: Icon(
                               IconlyLight.game,
-                              color: controller.index == 1
+                              color: controller.value == 1
                                   ? MyColors.myBlue
                                   : Colors.white,
                             ),
@@ -131,7 +124,7 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                           Text(
                             "Ongoing",
                             style: TextStyle(
-                              color: controller.index == 1
+                              color: controller.value == 1
                                   ? Colors.white
                                   : MyColors.textColor,
                               fontWeight: FontWeight.w600,
@@ -148,7 +141,7 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                       //height: 60,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        color: controller.index == 2
+                        color: controller.value == 2
                             ? MyColors.myBlue
                             : Colors.white,
                       ),
@@ -156,12 +149,12 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           CircleAvatar(
-                            backgroundColor: controller.index == 2
+                            backgroundColor: controller.value == 2
                                 ? Colors.white
                                 : MyColors.myTeal,
                             child: Icon(
                               IconlyLight.tick_square,
-                              color: controller.index == 2
+                              color: controller.value == 2
                                   ? MyColors.myBlue
                                   : Colors.white,
                             ),
@@ -172,7 +165,7 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                           Text(
                             "Complate",
                             style: TextStyle(
-                              color: controller.index == 2
+                              color: controller.value == 2
                                   ? Colors.white
                                   : MyColors.textColor,
                               fontWeight: FontWeight.w600,
@@ -189,11 +182,13 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
               ),
               SizedBox(
                 height: height,
-                child: TabBarView(children: [
-                  CousesView(),
-                  CousesView(),
-                  CousesView(),
-                ]),
+                child: TabBarView(
+                  children: [
+                    CousesView(),
+                    CousesView(),
+                    CousesView(),
+                  ],
+                ),
               )
             ],
           ),
@@ -202,7 +197,7 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
     );
   }
 
-  Widget _container(image, color, subjectName, description, complated) {
+  Future<Widget> _container(image, color, subjectName, description, complated) async {
     return Container(
       margin: const EdgeInsets.only(bottom: 30),
       height: 150,

@@ -1,4 +1,7 @@
+import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:edu_app/src/repository/exceptions/custom_exception.dart';
+import 'package:edu_app/src/repository/exceptions/logger.dart';
 import '../exceptions/forbidden_exception.dart';
 import '../exceptions/unauthorized_exception.dart';
 import 'apis.dart';
@@ -10,11 +13,12 @@ class Authenticate {
   static Future signIn(String username, String password, Map map) async {
     try {
       final response = await dio.post(API.BASE + API.signInUrl, data: map);
-      print("THIS IS THE RESPONSE: $response");
-      print(response.statusCode);
+      printer("THIS IS THE RESPONSE: $response");
+      printer(response.statusCode);
 
       final statusCode = response.statusCode;
       if (statusCode == 200) {
+        log("${response.data}");
         return response;
       } else if (statusCode == 401) {
         throw UnauthorizedException('Unauthorized: Invalid credentials');
@@ -22,11 +26,11 @@ class Authenticate {
         throw ForbiddenException('Forbidden: Access denied');
       }
     } on DioException catch (e) {
-      print("MANA: $e");
-      print("MANA: ${e.response}");
-      print(e.response?.data);
-      print(e.response?.headers);
-      print(e.response?.requestOptions);
+      printer("MANA: $e");
+      printer("MANA: ${e.response}");
+      printer(e.response?.data);
+      printer(e.response?.headers);
+      printer(e.response?.requestOptions);
     }
   }
 
@@ -34,11 +38,28 @@ class Authenticate {
       String email, String password, Map map) async {
     try {
       final response = await dio.post(API.BASE + API.signUpUrl, data: map);
-      print(response);
-      print(response.statusCode);
+      log("$response");
+      log("${response.statusCode}");
       return response.statusCode;
     } catch (error) {
-      print('Sign-up error: $error');
+      if (error is DioException) {
+        if (error.response != null) {
+          return CustomException(
+            statusCode: error.response!.statusCode!,
+            message: error.response!.statusMessage!,
+          );
+        } else {
+          return CustomException(
+            statusCode: 999,
+            message: "There is some error. Please try again",
+          );
+        }
+      } else {
+        return CustomException(
+          statusCode: 999,
+          message: "There is some error. Please try again",
+        );
+      }
     }
   }
 }
