@@ -1,12 +1,20 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:edu_app/src/config/router/router_utils.dart';
 import 'package:edu_app/src/repository/constants/endpoints.dart';
 import 'package:edu_app/src/repository/constants/symbols.dart';
 import 'package:edu_app/src/repository/exceptions/logger.dart';
+import 'package:edu_app/src/repository/local/secure_storage_services.dart';
 import 'package:edu_app/src/repository/models/auth_models/sign_in_model.dart';
 import 'package:edu_app/src/repository/models/auth_models/sign_up_model.dart';
 import 'package:edu_app/src/repository/services/auth_services_base.dart';
+import 'package:edu_app/src/ui/pages/bottom_navbar_view.dart';
+import 'package:edu_app/src/ui/widgets/custom_dialog.dart';
+import 'package:edu_app/src/ui/widgets/loading_dialog.dart';
+import 'package:flutter/cupertino.dart';
 
 class AuthServices implements AuthServicesBase {
   static final dio = Dio(
@@ -49,7 +57,8 @@ class AuthServices implements AuthServicesBase {
   }
 
   @override
-  Future<void> signIn({required SignInModel model}) async {
+  Future<void> signIn(BuildContext context,
+      {required SignInModel model}) async {
     if ((model.password.isEmpty || model.password.length < 6) &&
         model.username.isEmpty) {
       printer("if number 1");
@@ -63,6 +72,7 @@ class AuthServices implements AuthServicesBase {
 
     if (!(model.password.isEmpty || model.password.length < 6) &&
         model.username.isNotEmpty) {
+      showLoading(context);
       model.passwordValue.value = "";
       model.usernameValue.value = "";
       try {
@@ -71,6 +81,34 @@ class AuthServices implements AuthServicesBase {
           "password": model.password,
           "username": model.username,
         });
+
+        if (response.statusCode == 200 || response.statusCode == 201) {
+          SecureStorage.saveToken("${response.data}").then((value) {
+            Go(context).close();
+            Go(context).id(BottomNavBarView.id);
+          });
+        } else if (response.statusCode! > 499 && response.statusCode! < 600) {
+          Go(context).close();
+          showCustomDialog(
+            context: context,
+            message:
+                "Server bilan bog'lanishda xatolik yuzaga keldi. Iltimos, birozdan so'ng urinib ko'ring.",
+          );
+        } else if (response.statusCode! > 399 && response.statusCode! < 500) {
+          Go(context).close();
+          showCustomDialog(
+            context: context,
+            message:
+                "Login yoki parol noto'g'ri kiritilgan. Iltimos, tekshirib, qaytadan kiriting!",
+          );
+        } else {
+          Go(context).close();
+          showCustomDialog(
+            context: context,
+            message:
+                "Noma'lum xatolik yuzaga keldi. Iltimos, qaytadan urinib ko'ring. ",
+          );
+        }
 
         log("${response.data}");
       } catch (e) {

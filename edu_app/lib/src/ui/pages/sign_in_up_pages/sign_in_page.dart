@@ -45,7 +45,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
         updateState: updater,
       );
       setState(() {});
-      AuthServices().signIn(model: model.value);
+      AuthServices().signIn(context, model: model.value);
     }
 
     return Scaffold(

@@ -8,5 +8,6 @@ class MyColors{
   static Color myOlive = const Color(0xff8b865c);
   static Color myBackground = const Color(0xffeff9ff);
   static Color myGreen = Colors.green;
+  static Color myRed = Colors.red;
 
 }
