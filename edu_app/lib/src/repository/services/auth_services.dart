@@ -1,11 +1,17 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
+import 'package:edu_app/src/repository/constants/endpoints.dart';
 import 'package:edu_app/src/repository/constants/symbols.dart';
+import 'package:edu_app/src/repository/exceptions/logger.dart';
 import 'package:edu_app/src/repository/models/auth_models/sign_in_model.dart';
 import 'package:edu_app/src/repository/models/auth_models/sign_up_model.dart';
 import 'package:edu_app/src/repository/services/auth_services_base.dart';
 
 class AuthServices implements AuthServicesBase {
-  static final dio = Dio();
+  static final dio = Dio(
+    BaseOptions(baseUrl: Endpoints.base),
+  );
 
   @override
   bool checkEmail(String text) {
@@ -44,12 +50,32 @@ class AuthServices implements AuthServicesBase {
 
   @override
   Future<void> signIn({required SignInModel model}) async {
-    if (model.password.isEmpty || model.password.length < 6) {
+    if ((model.password.isEmpty || model.password.length < 6) &&
+        model.username.isEmpty) {
+      printer("if number 1");
+      model.passwordValue.value = "Iltimos, parolni to'g'ri kiriting kiriting";
+      model.usernameValue.value = "Iltimos, usename-ni kiriting";
+    } else if (model.password.isEmpty || model.password.length < 6) {
       model.passwordValue.value = "Iltimos, parolni to'g'ri kiriting kiriting";
     } else if (model.username.isEmpty) {
-      model.passwordValue.value = "Iltimos, usename-ni kiriting";
-    } else {
+      model.usernameValue.value = "Iltimos, usename-ni kiriting";
+    }
 
+    if (!(model.password.isEmpty || model.password.length < 6) &&
+        model.username.isNotEmpty) {
+      model.passwordValue.value = "";
+      model.usernameValue.value = "";
+      try {
+        printer("starting...");
+        final response = await dio.post(Endpoints.signIn, data: {
+          "password": model.password,
+          "username": model.username,
+        });
+
+        log("${response.data}");
+      } catch (e) {
+        log("$e");
+      }
     }
   }
 

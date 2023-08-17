@@ -46,6 +46,7 @@ dependencies:
   hooks_riverpod: ^2.3.7
   riverpod: ^2.3.6
   lottie: ^2.6.0
+  flutter_secure_storage: ^8.0.0
 
 dev_dependencies:
   flutter_test:

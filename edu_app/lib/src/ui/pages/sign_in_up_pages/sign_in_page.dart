@@ -1,20 +1,53 @@
 import 'package:edu_app/src/config/router/router_utils.dart';
+import 'package:edu_app/src/repository/models/auth_models/sign_in_model.dart';
+import 'package:edu_app/src/repository/services/auth_services.dart';
 import 'package:edu_app/src/ui/pages/sign_in_up_pages/sign_up_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SignInPage extends StatefulWidget {
+class SignInPage extends StatefulHookConsumerWidget {
   static const String id = "sign_in_page";
 
   const SignInPage({Key? key}) : super(key: key);
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  ConsumerState<SignInPage> createState() => _SignInPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _SignInPageState extends ConsumerState<SignInPage> {
+  void updater() => setState(() {});
+
   @override
   Widget build(BuildContext context) {
+    final passwordValue = useState<String>("");
+    final usernameValue = useState<String>("");
+    final usernameController = useTextEditingController();
+    final passwordController = useTextEditingController();
+    final obsText = useState<bool>(true);
     final widthSize = MediaQuery.of(context).size.width;
+    final model = useState(
+      SignInModel(
+        username: usernameController.text.trim(),
+        password: passwordController.text.trim(),
+        passwordValue: passwordValue,
+        usernameValue: usernameValue,
+        updateState: updater,
+      ),
+    );
+
+    void login() {
+      model.value = SignInModel(
+        username: usernameController.text.trim(),
+        password: passwordController.text.trim(),
+        passwordValue: passwordValue,
+        usernameValue: usernameValue,
+        updateState: updater,
+      );
+      setState(() {});
+      AuthServices().signIn(model: model.value);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -55,13 +88,14 @@ class _SignInPageState extends State<SignInPage> {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const Text(
-                  "authCheckController.userNameChecker.value",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.red,
+                if (model.value.usernameValue.value.isNotEmpty)
+                  Text(
+                    model.value.usernameValue.value,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.red,
+                    ),
                   ),
-                ),
                 Container(
                   margin: const EdgeInsets.only(
                     top: 15,
@@ -71,10 +105,10 @@ class _SignInPageState extends State<SignInPage> {
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.grey),
                   ),
-                  child: const TextField(
-                    controller: null,
-                    style: TextStyle(fontSize: 16),
-                    decoration: InputDecoration(
+                  child: TextField(
+                    controller: usernameController,
+                    style: const TextStyle(fontSize: 16),
+                    decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(10),
                       border: InputBorder.none,
                       hintText: "Enter username",
@@ -96,13 +130,14 @@ class _SignInPageState extends State<SignInPage> {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const Text(
-                  "r.valueauthCheckController.passwordChecke",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.red,
+                if (model.value.passwordValue.value.isNotEmpty)
+                  Text(
+                    model.value.passwordValue.value,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.red,
+                    ),
                   ),
-                ),
                 Container(
                   margin: const EdgeInsets.only(
                     top: 15,
@@ -114,12 +149,12 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                   child: Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: TextField(
-                          controller: null,
-                          obscureText: true,
-                          style: TextStyle(fontSize: 16),
-                          decoration: InputDecoration(
+                          controller: passwordController,
+                          obscureText: obsText.value,
+                          style: const TextStyle(fontSize: 16),
+                          decoration: const InputDecoration(
                             contentPadding: EdgeInsets.all(10),
                             border: InputBorder.none,
                             hintText: "Enter the password",
@@ -131,8 +166,10 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
-                        icon: "".isEmpty
+                        onPressed: () {
+                          obsText.value = !obsText.value;
+                        },
+                        icon: obsText.value
                             ? const Icon(Icons.visibility)
                             : const Icon(Icons.visibility_off),
                       ),
@@ -157,7 +194,7 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: login,
                     child: const Text(
                       "Sign in",
                       style: TextStyle(
