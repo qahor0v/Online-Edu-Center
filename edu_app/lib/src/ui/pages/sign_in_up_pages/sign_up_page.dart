@@ -1,16 +1,25 @@
 import 'package:edu_app/src/config/router/router_utils.dart';
+import 'package:edu_app/src/repository/models/auth_models/sign_up_model.dart';
+import 'package:edu_app/src/repository/services/auth_services.dart';
 import 'package:edu_app/src/ui/pages/sign_in_up_pages/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SignUpPage extends HookConsumerWidget {
+class SignUpPage extends StatefulHookConsumerWidget {
   static const String id = "sign_up_page";
 
   const SignUpPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ref) {
+  ConsumerState<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends ConsumerState<SignUpPage> {
+  void updater() => setState(() {});
+
+  @override
+  Widget build(BuildContext context) {
     final widthSize = MediaQuery.of(context).size.width;
     final passwordController = useTextEditingController();
     final confirmPasswordController = useTextEditingController();
@@ -19,6 +28,48 @@ class SignUpPage extends HookConsumerWidget {
     final usernameController = useTextEditingController();
     final emailController = useTextEditingController();
     var visibleText = useState<bool>(false);
+    final usernameValue = useState('');
+    final passwordValue = useState('');
+    final emailValue = useState('');
+    final lastNameValue = useState('');
+    final nameValue = useState('');
+
+    final model = useState<SignUpModel>(
+      SignUpModel(
+        name: nameController.text.trim(),
+        confirmPassword: confirmPasswordController.text.trim(),
+        email: emailController.text.trim(),
+        lastName: lastNameController.text.trim(),
+        password: passwordController.text.trim(),
+        userName: usernameController.text.trim(),
+        updateState: updater,
+        usernameValue: usernameValue,
+        passwordValue: passwordValue,
+        emailValue: emailValue,
+        lastNameValue: lastNameValue,
+        nameValue: nameValue,
+      ),
+    );
+
+    void signUP() {
+      model.value = SignUpModel(
+        name: nameController.text.trim(),
+        confirmPassword: confirmPasswordController.text.trim(),
+        email: emailController.text.trim(),
+        lastName: lastNameController.text.trim(),
+        password: passwordController.text.trim(),
+        userName: usernameController.text.trim(),
+        updateState: updater,
+        usernameValue: usernameValue,
+        passwordValue: passwordValue,
+        emailValue: emailValue,
+        lastNameValue: lastNameValue,
+        nameValue: nameValue,
+      );
+      setState(() {});
+      AuthServices().signUp(context, model: model.value);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -55,13 +106,14 @@ class SignUpPage extends HookConsumerWidget {
                   "Name",
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
-                const Text(
-                  "signUpController.nameChecker.value",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.red,
+                if (nameValue.value.isNotEmpty)
+                  Text(
+                    nameValue.value,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.red,
+                    ),
                   ),
-                ),
                 Container(
                   margin: const EdgeInsets.only(
                     top: 15,
@@ -94,13 +146,14 @@ class SignUpPage extends HookConsumerWidget {
                   "Last name",
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
-                const Text(
-                  "signUpController.lastNameChecker.value",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.red,
+                if (lastNameValue.value.isNotEmpty)
+                  Text(
+                    lastNameValue.value,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.red,
+                    ),
                   ),
-                ),
                 Container(
                   margin: const EdgeInsets.only(
                     top: 15,
@@ -133,13 +186,14 @@ class SignUpPage extends HookConsumerWidget {
                   "Username",
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
-                const Text(
-                  "signUpController.userNameChecker.value",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.red,
+                if (usernameValue.value.isNotEmpty)
+                  Text(
+                    usernameValue.value,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.red,
+                    ),
                   ),
-                ),
                 Container(
                   margin: const EdgeInsets.only(
                     top: 15,
@@ -173,13 +227,14 @@ class SignUpPage extends HookConsumerWidget {
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
 
-                const Text(
-                  "",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.red,
+                if (emailValue.value.isNotEmpty)
+                  Text(
+                    emailValue.value,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.red,
+                    ),
                   ),
-                ),
                 Container(
                   margin: const EdgeInsets.only(
                     top: 15,
@@ -212,13 +267,14 @@ class SignUpPage extends HookConsumerWidget {
                   "Password",
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
-                Text(
-                  "signUpController.passwordChecker.value",
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.red,
+                if (passwordValue.value.isNotEmpty)
+                  Text(
+                    passwordValue.value,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.red,
+                    ),
                   ),
-                ),
                 Container(
                   margin: const EdgeInsets.only(
                     top: 15,
@@ -266,13 +322,14 @@ class SignUpPage extends HookConsumerWidget {
                   "Repeat the password",
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
-                const Text(
-                  "signUpController.passwordRepeatChecker.value",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.red,
+                if (passwordValue.value.isNotEmpty)
+                  Text(
+                    passwordValue.value,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.red,
+                    ),
                   ),
-                ),
                 Container(
                   margin: const EdgeInsets.only(
                     top: 15,
@@ -328,7 +385,7 @@ class SignUpPage extends HookConsumerWidget {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: signUP,
                     child: const Text(
                       "Sign up",
                       style: TextStyle(

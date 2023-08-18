@@ -1,10 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
-
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:edu_app/src/config/router/router_utils.dart';
 import 'package:edu_app/src/repository/constants/endpoints.dart';
+import 'package:edu_app/src/repository/constants/strings.dart';
 import 'package:edu_app/src/repository/constants/symbols.dart';
 import 'package:edu_app/src/repository/exceptions/logger.dart';
 import 'package:edu_app/src/repository/local/secure_storage_services.dart';
@@ -62,13 +60,12 @@ class AuthServices implements AuthServicesBase {
       {required SignInModel model}) async {
     if ((model.password.isEmpty || model.password.length < 6) &&
         model.username.isEmpty) {
-      printer("if number 1");
-      model.passwordValue.value = "Iltimos, parolni to'g'ri kiriting kiriting";
-      model.usernameValue.value = "Iltimos, usename-ni kiriting";
+      model.passwordValue.value = AppStrings.enterTruePassword;
+      model.usernameValue.value = AppStrings.enterUsername;
     } else if (model.password.isEmpty || model.password.length < 6) {
-      model.passwordValue.value = "Iltimos, parolni to'g'ri kiriting kiriting";
+      model.passwordValue.value = AppStrings.enterTruePassword;
     } else if (model.username.isEmpty) {
-      model.usernameValue.value = "Iltimos, usename-ni kiriting";
+      model.usernameValue.value = AppStrings.enterUsername;
     }
 
     if (!(model.password.isEmpty || model.password.length < 6) &&
@@ -77,10 +74,9 @@ class AuthServices implements AuthServicesBase {
       model.passwordValue.value = "";
       model.usernameValue.value = "";
       try {
-        printer("starting...");
         final response = await dio.post(Endpoints.signIn, data: {
-          "password": model.password,
-          "username": model.username,
+          Endpoints.password: model.password,
+          Endpoints.username: model.username,
         });
 
         if (response.statusCode == 200 || response.statusCode == 201) {
@@ -88,38 +84,96 @@ class AuthServices implements AuthServicesBase {
             Go(context).close();
             Go(context).id(BottomNavBarView.id);
           });
-        } else if (response.statusCode! > 499 && response.statusCode! < 600) {
+        }
+      } catch (e) {
+        printer(e);
+        e as DioException;
+        final response = e.response;
+        if (response!.statusCode! > 499 && response.statusCode! < 600) {
           Go(context).close();
           showCustomDialog(
             context: context,
-            message:
-                "Server bilan bog'lanishda xatolik yuzaga keldi. Iltimos, birozdan so'ng urinib ko'ring.",
+            message: AppStrings.errorWithServer,
           );
         } else if (response.statusCode! > 399 && response.statusCode! < 500) {
           Go(context).close();
           showCustomDialog(
             context: context,
-            message:
-                "Login yoki parol noto'g'ri kiritilgan. Iltimos, tekshirib, qaytadan kiriting!",
+            message: AppStrings.checkPasswordUsername,
           );
         } else {
           Go(context).close();
           showCustomDialog(
             context: context,
-            message:
-                "Noma'lum xatolik yuzaga keldi. Iltimos, qaytadan urinib ko'ring. ",
+            message: AppStrings.unknownError,
           );
         }
-
-        log("${response.data}");
-      } catch (e) {
-        log("$e");
       }
     }
   }
 
   @override
-  Future<void> signUp({required SignUpModel model}) async {}
+  Future<void> signUp(BuildContext context,
+      {required SignUpModel model}) async {
+    if (!checkEmail(model.email)) {
+      model.emailValue.value = AppStrings.enterTrueEmail;
+    }
+    if (model.email.length < 6 || checkEmail(model.email)) {
+      model.passwordValue.value = AppStrings.enterTruePasswordSignUp;
+    }
+
+    if (model.password != model.confirmPassword) {
+      model.passwordValue.value = AppStrings.checkConfirmPassword;
+    }
+
+    if (model.lastName.isEmpty) {
+      model.lastNameValue.value = AppStrings.enterLastName;
+    }
+
+    if (model.name.isEmpty) {
+      model.nameValue.value = AppStrings.enterName;
+    }
+
+    if (model.userName.isEmpty) {
+      model.usernameValue.value = AppStrings.enterUsername;
+    }
+
+    if (model.password.isEmpty) {
+      model.emailValue.value = AppStrings.enterEmail;
+    }
+
+    if (checkUp(model)) {
+      showLoading(context);
+      model.passwordValue.value = "";
+      model.usernameValue.value = "";
+      model.emailValue.value = "";
+      model.lastNameValue.value = "";
+      model.nameValue.value = "";
+      model.updateState;
+
+      try {
+        final response = await dio.post(
+          Endpoints.signIn,
+          data: {
+            Endpoints.password: model.password,
+            Endpoints.username: model.userName,
+            Endpoints.name: model.name,
+            Endpoints.lastName: model.lastName,
+            Endpoints.email: model.email,
+          },
+        );
+
+        if (response.statusCode == 200 || response.statusCode == 201) {
+          printer(response.data);
+
+          /// Go(context).close();
+          //             Go(context).id(SignInPage.id);
+        }
+      } catch (e) {
+        printer(e);
+      }
+    }
+  }
 
   @override
   Future<String> enterToApp() async {
@@ -137,5 +191,15 @@ class AuthServices implements AuthServicesBase {
     SecureStorage.deleteToken().then((value) {
       Go(context).id(SignInPage.id);
     });
+  }
+
+  bool checkUp(SignUpModel model) {
+    return model.userName.isNotEmpty &&
+        model.name.isNotEmpty &&
+        model.lastName.isNotEmpty &&
+        checkPassword(model.password) &&
+        model.password == model.confirmPassword &&
+        checkEmail(model.email) &&
+        model.password.length >= 6;
   }
 }

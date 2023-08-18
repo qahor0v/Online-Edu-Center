@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 abstract class AuthServicesBase {
   Future<void> signIn(BuildContext context, {required SignInModel model});
 
-  Future<void> signUp({required SignUpModel model});
+  Future<void> signUp(BuildContext context, {required SignUpModel model});
 
   bool checkPassword(String text);
 
