@@ -10,4 +10,8 @@ abstract class AuthServicesBase {
   bool checkPassword(String text);
 
   bool checkEmail(String text);
+
+  Future<String> enterToApp();
+
+  Future<void> exit(BuildContext context);
 }

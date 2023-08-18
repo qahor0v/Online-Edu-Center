@@ -91,12 +91,14 @@ class IntroPage extends StatelessWidget {
   /// indicator point
   Widget _indicator(bool isActive) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       height: 6,
       width: isActive ? 30 : 6,
-      margin: EdgeInsets.only(right: 5),
+      margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
-          color: Color(0xff213555), borderRadius: BorderRadius.circular(5)),
+        color: const Color(0xff213555),
+        borderRadius: BorderRadius.circular(5),
+      ),
     );
   }
 }

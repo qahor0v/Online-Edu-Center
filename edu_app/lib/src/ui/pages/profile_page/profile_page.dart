@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:edu_app/src/repository/services/auth_services.dart';
 import 'package:edu_app/src/ui/pages/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
@@ -373,6 +374,23 @@ class ProfilePage extends StatelessWidget {
                         ),
                         onTap: () {},
                         title: const Text("Change mode"),
+                      ),
+                      ListTile(
+                        leading: Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.grey.withOpacity(0.3),
+                          ),
+                          child: Icon(
+                            Icons.logout,
+                            color: MyColors.myRed,
+                          ),
+                        ),
+                        onTap: () {
+                          AuthServices().exit(context);
+                        },
+                        title: const Text("Exit"),
                       ),
                     ],
                   ),

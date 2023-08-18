@@ -12,6 +12,7 @@ import 'package:edu_app/src/repository/models/auth_models/sign_in_model.dart';
 import 'package:edu_app/src/repository/models/auth_models/sign_up_model.dart';
 import 'package:edu_app/src/repository/services/auth_services_base.dart';
 import 'package:edu_app/src/ui/pages/bottom_navbar_view.dart';
+import 'package:edu_app/src/ui/pages/sign_in_up_pages/sign_in_page.dart';
 import 'package:edu_app/src/ui/widgets/custom_dialog.dart';
 import 'package:edu_app/src/ui/widgets/loading_dialog.dart';
 import 'package:flutter/cupertino.dart';
@@ -119,4 +120,22 @@ class AuthServices implements AuthServicesBase {
 
   @override
   Future<void> signUp({required SignUpModel model}) async {}
+
+  @override
+  Future<String> enterToApp() async {
+    String haveAuth = "";
+    await SecureStorage.getToken().then((value) async {
+      if (value.isNotEmpty) {
+        haveAuth = value;
+      }
+    });
+    return haveAuth;
+  }
+
+  @override
+  Future<void> exit(BuildContext context) async {
+    SecureStorage.deleteToken().then((value) {
+      Go(context).id(SignInPage.id);
+    });
+  }
 }

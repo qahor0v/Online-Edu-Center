@@ -1,4 +1,5 @@
 import 'package:edu_app/src/config/router/app_router.dart';
+import 'package:edu_app/src/ui/pages/intro_pages/splash_page.dart';
 import 'package:edu_app/src/ui/pages/sign_in_up_pages/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SignInPage(),
+      home: const AppSplashPage(),
       routes: routes(context),
     );
   }
