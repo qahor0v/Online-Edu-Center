@@ -1,10 +1,4 @@
-import 'package:edu_app/src/config/router/router_utils.dart';
-import 'package:edu_app/src/repository/models/auth_models/sign_up_model.dart';
-import 'package:edu_app/src/repository/services/auth_services.dart';
-import 'package:edu_app/src/ui/pages/sign_in_up_pages/sign_in_page.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:edu_app/src/config/packages/exports.dart';
 
 class SignUpPage extends StatefulHookConsumerWidget {
   static const String id = "sign_up_page";

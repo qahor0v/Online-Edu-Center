@@ -1,19 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
-import 'package:dio/dio.dart';
-import 'package:edu_app/src/config/router/router_utils.dart';
-import 'package:edu_app/src/repository/constants/endpoints.dart';
-import 'package:edu_app/src/repository/constants/strings.dart';
-import 'package:edu_app/src/repository/constants/symbols.dart';
-import 'package:edu_app/src/repository/exceptions/logger.dart';
-import 'package:edu_app/src/repository/local/secure_storage_services.dart';
-import 'package:edu_app/src/repository/models/auth_models/sign_in_model.dart';
-import 'package:edu_app/src/repository/models/auth_models/sign_up_model.dart';
-import 'package:edu_app/src/repository/services/auth_services_base.dart';
-import 'package:edu_app/src/ui/pages/bottom_navbar_view.dart';
-import 'package:edu_app/src/ui/pages/sign_in_up_pages/sign_in_page.dart';
-import 'package:edu_app/src/ui/widgets/custom_dialog.dart';
-import 'package:edu_app/src/ui/widgets/loading_dialog.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:edu_app/src/config/packages/exports.dart';
 
 class AuthServices implements AuthServicesBase {
   static final dio = Dio(
