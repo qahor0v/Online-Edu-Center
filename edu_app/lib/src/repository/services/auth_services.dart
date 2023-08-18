@@ -103,31 +103,39 @@ class AuthServices implements AuthServicesBase {
       {required SignUpModel model}) async {
     if (!checkEmail(model.email)) {
       model.emailValue.value = AppStrings.enterTrueEmail;
-    }
-    if (model.email.length < 6 || checkEmail(model.email)) {
-      model.passwordValue.value = AppStrings.enterTruePasswordSignUp;
+    } else if (model.email.isEmpty) {
+      model.emailValue.value = AppStrings.enterEmail;
+    } else {
+      model.emailValue.value = "";
     }
 
     if (model.password != model.confirmPassword) {
       model.passwordValue.value = AppStrings.checkConfirmPassword;
+    } else if (model.password.length < 6 || !checkPassword(model.password)) {
+      model.passwordValue.value = AppStrings.enterTruePasswordSignUp;
+    } else {
+      model.passwordValue.value = "";
     }
 
     if (model.lastName.isEmpty) {
       model.lastNameValue.value = AppStrings.enterLastName;
+    } else {
+      model.lastNameValue.value = "";
     }
 
     if (model.name.isEmpty) {
       model.nameValue.value = AppStrings.enterName;
+    } else {
+      model.nameValue.value = "";
     }
 
     if (model.userName.isEmpty) {
       model.usernameValue.value = AppStrings.enterUsername;
+    } else {
+      model.usernameValue.value = "";
     }
 
-    if (model.password.isEmpty) {
-      model.emailValue.value = AppStrings.enterEmail;
-    }
-
+    model.updateState;
     if (checkUp(model)) {
       showLoading(context);
       model.passwordValue.value = "";
@@ -139,7 +147,7 @@ class AuthServices implements AuthServicesBase {
 
       try {
         final response = await dio.post(
-          Endpoints.signIn,
+          Endpoints.signUp,
           data: {
             Endpoints.password: model.password,
             Endpoints.username: model.userName,
@@ -149,14 +157,32 @@ class AuthServices implements AuthServicesBase {
           },
         );
 
-        if (response.statusCode == 200 || response.statusCode == 201) {
+        if (response.statusCode == 200 ||
+            response.statusCode == 201 ||
+            response.statusCode == 202) {
+          showCustomDialogSuccess(
+            context: context,
+            message: "${model.email}${AppStrings.confirmEmail}",
+            onTap: () {
+              Go(context).id(SignInPage.id);
+            },
+          );
           printer(response.data);
-
-          /// Go(context).close();
-          //             Go(context).id(SignInPage.id);
         }
       } catch (e) {
         printer(e);
+        e as DioException;
+        if (e.response!.statusCode == 403) {
+          model.updateState;
+          Go(context).close();
+          model.usernameValue.value = AppStrings.usernameAlreadyHave;
+        } else {
+          Go(context).close();
+          showCustomDialog(
+            context: context,
+            message: AppStrings.unknownError,
+          );
+        }
       }
     }
   }

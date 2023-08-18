@@ -21,7 +21,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
     final lastNameController = useTextEditingController();
     final usernameController = useTextEditingController();
     final emailController = useTextEditingController();
-    var visibleText = useState<bool>(false);
+    final visibleText = useState<bool>(false);
     final usernameValue = useState('');
     final passwordValue = useState('');
     final emailValue = useState('');

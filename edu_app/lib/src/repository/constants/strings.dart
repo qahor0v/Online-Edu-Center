@@ -24,4 +24,10 @@ abstract class AppStrings {
   static const String enterName = "Iltimos, ismingizni kiriting";
 
   static const String enterEmail = "Iltimos, email-ni kiriting";
+
+  static const String confirmEmail =
+      " manziliga emailni tasdiqlash uchun xabar yuborildi. Emailni tasdiqlang va dasturga kiring.";
+
+  static const String usernameAlreadyHave =
+      "Bu username allaqachon mavjud. Iltimos, boshqa username kiriting";
 }
