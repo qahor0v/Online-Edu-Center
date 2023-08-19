@@ -14,7 +14,7 @@ abstract class AppStrings {
   static const String enterTrueEmail = "Iltimos, email-ni to'g'ri kiriting";
 
   static const String enterTruePasswordSignUp =
-      "Parol kamida 6 ta belgi, raqam, katta va kichik harflardan iborat bo'lishi shart!";
+      "Parol kamida 6 ta  belgidan iborat bo'lishi shart!";
 
   static const String checkConfirmPassword =
       "Birinchi va takror kiritilgan parollar mos emas, iltimos tekshirib qaytadan kiriting!";

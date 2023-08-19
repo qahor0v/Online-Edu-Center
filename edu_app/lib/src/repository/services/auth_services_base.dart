@@ -11,7 +11,11 @@ abstract class AuthServicesBase {
 
   bool checkEmail(String text);
 
-  Future<String> enterToApp();
+  Future<String> enterToApp(BuildContext context);
 
   Future<void> exit(BuildContext context);
+
+  Future<void> signInWithGoogle();
+
+  Future<void> signUpWithGoogle();
 }

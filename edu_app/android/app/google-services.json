@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "193849046467",
+    "project_id": "milliy-edu-app",
+    "storage_bucket": "milliy-edu-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193849046467:android:264fb3a9ac928fbc7bb976",
+        "android_client_info": {
+          "package_name": "com.miiliy.edu_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193849046467-rbdvst99dtp3bi26ongavc89eplfi6h2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR9paTimL91WL7EXezoz9iIB6XCwc-oFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193849046467-rbdvst99dtp3bi26ongavc89eplfi6h2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

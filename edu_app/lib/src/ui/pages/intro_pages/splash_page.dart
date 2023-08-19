@@ -17,10 +17,9 @@ class AppSplashPage extends ConsumerStatefulWidget {
 
 class _AppSplashPageState extends ConsumerState<AppSplashPage> {
   void enter() async {
-    AuthServices().enterToApp().then((value) {
+    AuthServices().enterToApp(context).then((value) {
       Future.delayed(const Duration(seconds: 3), () {
         if (value.isNotEmpty) {
-          // printer(value);
           ref.read(userTokenProvider.notifier).state = value;
           Go(context).id(BottomNavBarView.id);
         } else {

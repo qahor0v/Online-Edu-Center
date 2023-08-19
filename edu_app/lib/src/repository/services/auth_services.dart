@@ -1,9 +1,13 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:edu_app/src/config/packages/exports.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthServices implements AuthServicesBase {
   static final dio = Dio(
-    BaseOptions(baseUrl: Endpoints.base),
+    BaseOptions(
+      baseUrl: Endpoints.base,
+      receiveDataWhenStatusError: true,
+    ),
   );
 
   @override
@@ -56,17 +60,27 @@ class AuthServices implements AuthServicesBase {
 
     if (!(model.password.isEmpty || model.password.length < 6) &&
         model.username.isNotEmpty) {
+      printer("starting...");
       showLoading(context);
       model.passwordValue.value = "";
       model.usernameValue.value = "";
       try {
-        final response = await dio.post(Endpoints.signIn, data: {
-          Endpoints.password: model.password,
-          Endpoints.username: model.username,
-        });
+        final response = await dio.post(
+          Endpoints.signIn,
+          data: {
+            Endpoints.password: model.password,
+            Endpoints.username: model.username,
+          },
+        );
 
         if (response.statusCode == 200 || response.statusCode == 201) {
-          SecureStorage.saveToken("${response.data}").then((value) {
+          printer(response.data);
+          SecureStorage storage = SecureStorage(
+            password: model.password,
+            username: model.username,
+            token: response.data,
+          );
+          SecureStorage.saveToken(storage).then((value) {
             Go(context).close();
             Go(context).id(BottomNavBarView.id);
           });
@@ -111,7 +125,7 @@ class AuthServices implements AuthServicesBase {
 
     if (model.password != model.confirmPassword) {
       model.passwordValue.value = AppStrings.checkConfirmPassword;
-    } else if (model.password.length < 6 || !checkPassword(model.password)) {
+    } else if (model.password.length < 6) {
       model.passwordValue.value = AppStrings.enterTruePasswordSignUp;
     } else {
       model.passwordValue.value = "";
@@ -157,9 +171,7 @@ class AuthServices implements AuthServicesBase {
           },
         );
 
-        if (response.statusCode == 200 ||
-            response.statusCode == 201 ||
-            response.statusCode == 202) {
+        if (response.data['statusCodeValue'] == 202) {
           showCustomDialogSuccess(
             context: context,
             message: "${model.email}${AppStrings.confirmEmail}",
@@ -168,31 +180,51 @@ class AuthServices implements AuthServicesBase {
             },
           );
           printer(response.data);
+        } else if (response.data['statusCodeValue'] == 500) {
+          model.updateState;
+          Go(context).close();
+          model.usernameValue.value = AppStrings.usernameAlreadyHave;
         }
       } catch (e) {
         printer(e);
         e as DioException;
-        if (e.response!.statusCode == 403) {
-          model.updateState;
-          Go(context).close();
-          model.usernameValue.value = AppStrings.usernameAlreadyHave;
-        } else {
-          Go(context).close();
-          showCustomDialog(
-            context: context,
-            message: AppStrings.unknownError,
-          );
-        }
+
+        Go(context).close();
+        showCustomDialog(
+          context: context,
+          message: AppStrings.unknownError,
+        );
       }
     }
   }
 
   @override
-  Future<String> enterToApp() async {
+  Future<String> enterToApp(BuildContext context) async {
     String haveAuth = "";
     await SecureStorage.getToken().then((value) async {
-      if (value.isNotEmpty) {
-        haveAuth = value;
+      if (value.token.isNotEmpty) {
+        try {
+          final response = await dio.post(
+            Endpoints.signIn,
+            data: {
+              Endpoints.password: value.password,
+              Endpoints.username: value.username,
+            },
+          );
+
+          if (response.statusCode == 200 || response.statusCode == 201) {
+            printer(response.data);
+            haveAuth = response.data;
+            SecureStorage storage = SecureStorage(
+              password: value.password,
+              username: value.username,
+              token: response.data,
+            );
+            await SecureStorage.saveToken(storage);
+          }
+        } catch (e) {
+          printer(e);
+        }
       }
     });
     return haveAuth;
@@ -209,9 +241,20 @@ class AuthServices implements AuthServicesBase {
     return model.userName.isNotEmpty &&
         model.name.isNotEmpty &&
         model.lastName.isNotEmpty &&
-        checkPassword(model.password) &&
         model.password == model.confirmPassword &&
         checkEmail(model.email) &&
         model.password.length >= 6;
+  }
+
+  @override
+  Future<void> signInWithGoogle() async {
+    GoogleSignInAccount? user = await GoogleSignIn().signIn();
+    if (user != null) {}
+  }
+
+  @override
+  Future<void> signUpWithGoogle() {
+    // TODO: implement signUpWithGoogle
+    throw UnimplementedError();
   }
 }

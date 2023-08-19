@@ -179,7 +179,9 @@ class ProfilePage extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              AuthServices().exit(context);
+            },
             icon: const Icon(IconlyLight.logout),
           ),
         ],
@@ -374,23 +376,6 @@ class ProfilePage extends StatelessWidget {
                         ),
                         onTap: () {},
                         title: const Text("Change mode"),
-                      ),
-                      ListTile(
-                        leading: Container(
-                          padding: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.grey.withOpacity(0.3),
-                          ),
-                          child: Icon(
-                            Icons.logout,
-                            color: MyColors.myRed,
-                          ),
-                        ),
-                        onTap: () {
-                          AuthServices().exit(context);
-                        },
-                        title: const Text("Exit"),
                       ),
                     ],
                   ),
